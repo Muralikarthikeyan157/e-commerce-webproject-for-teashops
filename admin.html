@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Menu — Sunrise Bakery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">Sunrise Bakery</div>
+    <nav>
+      <a href="index.html" data-page="billing">Billing</a>
+      <a href="admin.html" data-page="admin" class="active">Manage Menu</a>
+      <a href="reports.html" data-page="reports">Sales Reports</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Manage Menu</h1>
+    <div class="admin-layout">
+      <section class="card">
+        <h2 id="form-title">Add Menu Item</h2>
+        <form id="menu-form">
+          <div class="form-group">
+            <label for="item-name">Item Name</label>
+            <input type="text" id="item-name" required placeholder="e.g. Tea">
+          </div>
+          <div class="form-group">
+            <label for="item-price">Price (₹)</label>
+            <input type="number" id="item-price" required min="0" step="1" placeholder="e.g. 15">
+          </div>
+          <div class="form-group">
+            <label for="item-image">Image URL</label>
+            <input type="url" id="item-image" placeholder="https://example.com/image.jpg">
+          </div>
+          <div class="form-group">
+            <label for="item-file">Or upload image</label>
+            <input type="file" id="item-file" accept="image/*">
+            <img id="image-preview" class="image-preview" alt="Preview" style="display:none">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Item</button>
+            <button type="button" id="btn-cancel-edit" class="btn btn-outline" style="display:none">Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Current Menu</h2>
+        <table class="menu-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="menu-table-body"></tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    setActiveNav('admin');
+    initAdmin();
+  </script>
+</body>
+</html>

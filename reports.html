@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Reports — Sunrise Bakery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">Sunrise Bakery</div>
+    <nav>
+      <a href="index.html" data-page="billing">Billing</a>
+      <a href="admin.html" data-page="admin">Manage Menu</a>
+      <a href="reports.html" data-page="reports" class="active">Sales Reports</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Sales Reports</h1>
+
+    <div class="report-filters">
+      <button type="button" class="btn btn-outline active" data-filter="all">All Time</button>
+      <button type="button" class="btn btn-outline" data-filter="week">This Week</button>
+      <button type="button" class="btn btn-outline" data-filter="month">This Month</button>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="value" id="stat-revenue">₹0.00</div>
+        <div class="label">Total Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="stat-orders">0</div>
+        <div class="label">Total Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="stat-avg">₹0.00</div>
+        <div class="label">Avg Order Value</div>
+      </div>
+    </div>
+
+    <div class="reports-grid">
+      <section class="card">
+        <h2>Weekly Sales</h2>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Orders</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody id="weekly-table-body"></tbody>
+        </table>
+        <div class="chart-wrap">
+          <canvas id="weekly-chart"></canvas>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Monthly Sales</h2>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Orders</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-table-body"></tbody>
+        </table>
+        <div class="chart-wrap">
+          <canvas id="monthly-chart"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/reports.js"></script>
+  <script>
+    setActiveNav('reports');
+    initReports();
+  </script>
+</body>
+</html>

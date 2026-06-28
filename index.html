@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing — Sunrise Bakery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">Sunrise Bakery</div>
+    <nav>
+      <a href="index.html" data-page="billing" class="active">Billing</a>
+      <a href="admin.html" data-page="admin">Manage Menu</a>
+      <a href="reports.html" data-page="reports">Sales Reports</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Order &amp; Billing</h1>
+    <div class="billing-layout">
+      <section>
+        <div id="menu-grid" class="menu-grid"></div>
+      </section>
+
+      <aside class="cart-panel">
+        <h2>Cart</h2>
+        <ul id="cart-items" class="cart-items"></ul>
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total-amount">₹0.00</span>
+        </div>
+        <div class="cart-actions">
+          <button type="button" id="btn-pay" class="btn btn-accent" disabled>Pay Now</button>
+          <button type="button" id="btn-print" class="btn btn-primary" disabled>Print Bill</button>
+          <button type="button" id="btn-clear" class="btn btn-outline">Clear Cart</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="pay-modal" class="modal-overlay">
+    <div class="modal">
+      <h2>Pay via UPI</h2>
+      <div class="modal-summary">
+        <ul id="modal-summary-list"></ul>
+        <div class="modal-total">Total: <span id="modal-total"></span></div>
+      </div>
+      <div class="qr-container">
+        <canvas id="payment-qr"></canvas>
+        <p class="qr-hint">Scan with any UPI app to pay the exact amount.<br>Then click Mark as Paid.</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="btn-mark-paid" class="btn btn-accent">Mark as Paid</button>
+        <button type="button" id="btn-close-modal" class="btn btn-outline">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="print-receipt"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/billing.js"></script>
+  <script>
+    setActiveNav('billing');
+    renderMenuGrid('menu-grid', addToCart);
+    renderCart();
+    initBilling();
+  </script>
+</body>
+</html>
